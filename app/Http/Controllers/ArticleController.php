@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\EditedBy;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -54,8 +56,14 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $articles = Article::find($article->id);
-        return view('article/view')->with('article', $article);
+        $relations = EditedBy::all();
+        $editors = array();
+        foreach ($relations as $relation) {
+            if ($relation->idArticle==$article->id){
+                array_push($editors, Auth::user()->find($relation->idUser));
+            }
+        }
+        return view('article/view', ['article'=> $article, 'editors' => $editors]);
     }
 
     /**
@@ -78,11 +86,17 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        $input = $request->only(['title', 'content', 'idSection']);
+        $input = $request->only(['title', 'content', 'idSection', 'editor']);
         $article->title = $request['title'];
         $article->content = $request['content'];
         $article->idSection = $request['idSection'];
         $article->save();
+
+        $editedBy = new EditedBy;
+        $editedBy->idUser = $request['editor'];
+        $editedBy->idArticle = $article->id;
+        $editedBy->save();
+
         return redirect()->route('article.show',$article->id);
     }
 

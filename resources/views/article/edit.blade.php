@@ -30,6 +30,7 @@
                             @endforeach
                        	</select>
                        	<br />
+                       	<input type="hidden" value="{{ Auth::user()->id }}" name="editor">
 						<button type="submit" class="btn btn-primary next-step">Edit Article</button>
 	            	</form>
 		    	</section>

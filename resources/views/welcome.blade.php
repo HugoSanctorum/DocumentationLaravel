@@ -11,6 +11,6 @@
 
     <div class="line"></div>
 
-    <p>If you can't add or modify article <a style="color:#24276B; text-decoration: underline;" href="{{ route('contact') }}">contact</a> the administrator.</p>
+    <p>If you can't add or modify article <a style="color:#24276B; text-decoration: underline;" href="{{ /*route('contact')*/ '#' }}">contact</a> the administrator.</p>
 
 @endsection
