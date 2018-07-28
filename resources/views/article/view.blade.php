@@ -23,7 +23,7 @@
 		</ul>
 	</div>
 	<hr />	
-	<p>{{ $article->content }}</p>
+	<p><?php echo($article->content) ?></p>
 @endsection
 
 @section('scripts')

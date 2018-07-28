@@ -416,6 +416,11 @@ span.round-tab:hover {
     margin-top: 0;
 }
 
+/* ---------------------------------------------------
+	MEDIAQUERIES
+----------------------------------------------------- */
+
+
 @media( max-width : 585px ) {
 
     .wizard {
@@ -443,10 +448,6 @@ span.round-tab:hover {
     }
 }
 
-
-/* ---------------------------------------------------
-	MEDIAQUERIES
------------------------------------------------------ */
 @media (max-width: 768px) {
 
 	.navbar-header {
@@ -487,4 +488,14 @@ span.round-tab:hover {
         transition: none;
     }
 
+}
+
+@media print {
+	nav {
+		display: none;
+	}
+
+	#contentPDF {
+		display: block !important;
+	}
 }
