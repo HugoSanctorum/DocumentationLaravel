@@ -23,7 +23,7 @@
 		</ul>
 	</div>
 	<hr />	
-	<p><?php echo($article->content) ?></p>
+	<p>{!! html_entity_decode($article->content) !!}</p>
 @endsection
 
 @section('scripts')
